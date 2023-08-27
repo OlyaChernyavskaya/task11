@@ -1,0 +1,174 @@
+Зайти в домашнюю директорию
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/task11 (main)
+$ cd
+
+Создать папку test 3
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~
+$ mkdir "test 3"
+
+Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ echo -e "row1\nrow2\nrow3\nrow4"> ~/"test 3"/4
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ echo -e "row1\nrow2\nrow3\nrow4"> ~/"test 3"/5
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ echo -e "row1\nrow2\nrow3\nrow4"> ~/"test 3"/6
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ cat *
+row1
+row2
+row3
+row4
+row1
+row2
+row3
+row4
+row1
+row2
+row3
+row4
+
+Найдите строку row2 в файле 5
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ grep row2 5
+row2
+
+Найдите строку row в папке test3
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ grep -r row .
+./4:row1
+./4:row2
+./4:row3
+./4:row4
+./5:row1
+./5:row2
+./5:row3
+./5:row4
+./6:row1
+./6:row2
+./6:row3
+./6:row4
+
+Посчитайте сколько строк с содержимым row в файле 6
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ grep -c row 6
+4
+
+Найдите файл 5 внутри папки test3
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ find . -name "5"
+./5
+
+Используя команду find, удалите файл 5
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ find . -name "5" -delete
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ ls -1
+4
+6
+
+Используя команду echo, добавьте слово test в файл 4
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ echo test >> 4
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ cat 4
+row1
+row2
+row3
+row4
+test
+
+Замените слово test в файле 4 на fail
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ sed -i "s/test/fail/" 4
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ cat 4
+row1
+row2
+row3
+row4
+fail
+
+Добавьте в файл 4 слово test так, чтобы сохранилось содержимое
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ echo test >> 4
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ cat 4
+row1
+row2
+row3
+row4
+fail
+test
+
+Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ ps -u Olya
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      270      71     270      12280  cons0     197611 12:57:44 /usr/bin/ps
+       71       1      71      11784  cons0     197611 12:14:47 /usr/bin/bash
+
+Убейте процесс 666 в консоли
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ ps aux
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+       71       1      71      11784  cons0     197611 12:14:47 /usr/bin/bash
+      274      71     274       5152  cons0     197611 12:58:28 /usr/bin/ps
+
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ kill 666
+bash: kill: (666) - No such process
+
+Узнайте доступность ресурса artsiomrusau.com, используя ping
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ ping artsiomrusau.com
+
+Pinging artsiomrusau.com [185.215.4.92] with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 185.215.4.92:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+Отправьте 5 пакетов на сайт artsiomrusau.com
+[root@DESKTOP-S1V5PQ2:~]# ping -c 5 artsiomrusau.com
+PING artsiomrusau.com (185.215.4.92) 56(84) bytes of data.
+
+--- artsiomrusau.com ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4006ms
+
+Используя GET и команду curl, получите информацию о зарегистрированных питомцах на https://petstore.swagger.io/
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ curl -X 'GET' \
+>   'https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=pending&status=sold' \
+>   -H 'accept: application/json'
+[{"id":9223372036854293093,"category":{"id":0,"name":"string"},
+
+Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/
+Olya@DESKTOP-S1V5PQ2 MINGW64 ~/test 3
+$ curl -X 'POST' \
+>   'https://petstore.swagger.io/v2/user' \
+>   -H 'accept: application/json' \        
+>   -H 'Content-Type: application/json' \
+>   -d '{
+>   "id": 91234,
+>   "username": "HelenB",
+>   "firstName": "Helen",
+>   "lastName": "Bloom",
+>   "email": "blHe@wof.com",     
+>   "password": "str98765654768",
+>   "phone": "s123456789",
+>   "userStatus": 0       
+> }'
+{"code":200,"type":"unknown","message":"91234"}
